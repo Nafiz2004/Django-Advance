@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>BASE</title>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="{% url 'index' %}">index</a></li>
+        <li><a href="{% url 'basic_app:register' %}">register</a></li>
+        <li><a href="{% url 'admin:index' %}">admin</a></li>
+
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+          <li><a href="{% url 'basic_app:login' %}">Login</a></li>
+        {% endif %}
+
+      </ul>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+  </body>
+</html>
