@@ -1,0 +1,18 @@
+{% extends 'teaching_app/base.html'%}
+
+{% block content %}
+
+  {% if registered %}
+    <h2>Successful in registering</h2>
+
+  {% else %}
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ usermodel.as_p }}
+      {{ usermodelextra.as_p }}
+      <input type="submit" value="Register">
+    </form>
+
+  {% endif %}
+
+{% endblock %}
